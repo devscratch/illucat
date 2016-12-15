@@ -6,7 +6,7 @@ class Init {
 
     public function Hello()
     {
-      return die('hello');
+      return die('Hello World.');
     }
 
 }
