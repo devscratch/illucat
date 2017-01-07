@@ -4,11 +4,11 @@ namespace Illucat\Support;
 
 use Illucat\Factory\Pipeline;
 use Illucat\Factory\Driver;
-use Illucat\Support\Slicer;
+use Illucat\Factory\Slicer;
 
 trait Socks {
 
-      public static function grabCookies($case = 1)
+      public static function grabCookies($case = 2)
       {
           switch ($case) {
             case 1:
