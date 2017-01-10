@@ -2,23 +2,34 @@
 
 namespace Illucat\Factory;
 
+use Illucat\Factory\Driver;
+use Illucat\Factory\Slicer;
+
 class Mass {
 
-    public static function Mass($sock,$email,$password,$agent)
+    public static function Mass($url,$sock,$agent)
     {
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, "http://jsec.me/register.php");
-      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
-      curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
-      curl_setopt($ch, CURLOPT_POST, TRUE);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "email=" . urlencode($email) . "&password=" . $password . "&register=");
-      curl_setopt($ch, CURLOPT_USERAGENT, $agent);
-      curl_setopt($ch, CURLOPT_PROXY, $sock);
-      curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-      return curl_exec($ch);
+
+        $listSocks = explode("\r\n", $sock);
+        foreach($listSocks as $sock)
+        {
+          echo "socknya => " .  $sock . "\r\n";
+            /*
+            echo "[" . $sock . "] => boting..... ";
+            $grab = Driver::Take($url,$sock,$agent);
+            if(preg_match("/\"images\/add\-to\-cart\.png/",$grab))
+            {
+                echo "ada add to cartnya" . PHP_EOL;
+            }
+            else
+            {
+                echo "nggak ada" . PHP_EOL;
+            }
+            */
+        }
+
+
+
     }
 
 }

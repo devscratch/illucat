@@ -2,13 +2,13 @@
 
 namespace Illucat\Support;
 
-use Illucat\Factory\Pipeline;
-use Illucat\Factory\Driver;
-use Illucat\Factory\Slicer;
+use \Illucat\Factory\Pipeline;
+use \Illucat\Factory\Driver;
+use \Illucat\Factory\Slicer;
 
 trait Socks {
 
-      public static function grabCookies($case = 2)
+      public static function grabCookies($case = 1)
       {
           switch ($case) {
             case 1:

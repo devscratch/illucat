@@ -57,13 +57,28 @@ trait Driver {
          protected $errors;
 
 
-         public static function Take($url)
+         public static function Take($url,$sock = "",$agent = "")
          {
            $ch = curl_init();
            curl_setopt($ch, CURLOPT_URL, $url);
            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-           curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
+           curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
+           curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
+           if($sock != "")
+           {
+             curl_setopt($ch, CURLOPT_PROXY, $sock);
+             curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+           }
+           if($agent != "")
+           {
+             curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+           }
+           else
+           {
+             curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
+           }
+           curl_setopt($ch, CURLOPT_TIMEOUT, 10);
            return curl_exec($ch);
          }
 
