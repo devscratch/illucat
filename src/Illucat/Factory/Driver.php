@@ -79,7 +79,8 @@ trait Driver {
              curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
            }
            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-           return curl_exec($ch);
+           $result = curl_exec($ch);
+           return $result;
          }
 
 }

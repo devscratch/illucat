@@ -22,12 +22,16 @@ class c {
   public function massRegister($url)
   {
     $agent = \Faker\Provider\UserAgent::userAgent();
-    $socks = \Illucat\Support\Socks::grabCookies();
+    $socks = explode(PHP_EOL, \Illucat\Support\Socks::grabCookies());
+
+    foreach ($socks as $key => $sock)
+    {
+      $faker = \Faker\Factory::create();
+
+      $register = \Illucat\Factory\Mass::Mass($url,$sock,$agent);
+    }
 
 
-    $faker = \Faker\Factory::create();
-
-    $register = \Illucat\Factory\Mass::Mass($url,$socks,$agent);
   }
 
 
